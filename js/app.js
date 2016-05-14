@@ -51,7 +51,7 @@ function takePictures(){
 function countdownTimer() {
     let timer = document.querySelector("#countdown");
     let countdownTime = 3;
-    setInterval(function(){
+    let intervalID = setInterval(function(countdownTime,timer){
         timer.innerHTML = countdownTime;
         countdownTime--;
         
