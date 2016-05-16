@@ -73,5 +73,5 @@
         img.src = canvas.toDataURL("image/png");
         return img;
     }
-
+    
 //}, false);
