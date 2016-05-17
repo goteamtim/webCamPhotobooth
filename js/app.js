@@ -49,15 +49,12 @@
     };
 
     function countdownTimer() {
-
+        var countdownTime = 3;
         var intervalID = setInterval(function () {
             var timer = document.getElementById("countdown");
-            var countdownTime = "3";
             timer.innerHTML = countdownTime;
-            let tempTime = parseInt(countdownTime);
-            tempTime--;
-            countdownTime = tempTime.toString();
-            if (countdownTime == "0") {
+            countdownTime--;
+            if (countdownTime == 0) {
                 clearInterval(intervalID);
             }
         }, 500);
