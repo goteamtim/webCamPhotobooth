@@ -55,6 +55,7 @@
             timer.innerHTML = countdownTime;
             countdownTime--;
             if (countdownTime == 0) {
+                timer.innerHTML = "Smile!";
                 clearInterval(intervalID);
             }
         }, 1000);
@@ -67,7 +68,7 @@
 
     function convertToImage() {
         let img = new Image();
-        img.src = canvas.toDataURL("image/png");
+        img.src = canvas.toDataURL("image/jpg");
         return img;
     }
     
