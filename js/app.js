@@ -57,7 +57,7 @@
             if (countdownTime == 0) {
                 clearInterval(intervalID);
             }
-        }, 500);
+        }, 1000);
     }
 
     function takePicture() {
