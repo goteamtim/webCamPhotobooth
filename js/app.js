@@ -26,7 +26,14 @@
 
     });
 
-
+function buildPhotoStrip(photoArray){
+    //Paste the pictures to a picture strip
+    //canvas?
+    let canvas = document.getElementById("photoStrip");
+    photoArray.map(photo=>{
+        
+    })
+}
 
 
     function takePictures() {
