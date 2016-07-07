@@ -3,7 +3,7 @@
         context = canvas.getContext("2d"),
         video = document.getElementById("videoStream"),
         videoObj = { "video": true },
-        images = [],
+        imagesArray = [],
         onError = (error) => {
             console.log("Capture Error: " + error.code);
         };
@@ -26,13 +26,15 @@
 
     });
 
-function buildPhotoStrip(photoArray){
+function buildPhotoStrip(imgArray){
     //Paste the pictures to a picture strip
     //canvas?
-    let canvas = document.getElementById("photoStrip");
-    photoArray.map(photo=>{
-        
-    })
+    let photoStripCanvas = document.getElementById("photoStrip");
+    let photoStripContext = photoStripCanvas.getContext("2d");
+    imgArray.forEach((photo,arrIndex)=>{
+        //first Photo
+        photoStripContext.drawImage(photo,5,5*(arrIndex+1)+(480*arrIndex),640,480);
+    },this);
 }
 
 
@@ -46,9 +48,10 @@ function buildPhotoStrip(photoArray){
             takePicture();
             countdownTimer();
             pictureCount++;
-            images.push( convertToImage());
+            imagesArray.push( convertToImage());
             //
             if (pictureCount >= 4) {
+                buildPhotoStrip(imagesArray);
                 //stops the interval
                 clearInterval(refreshInterval);
             }
