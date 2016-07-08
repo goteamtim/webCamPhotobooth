@@ -9,6 +9,7 @@
             console.log("Capture Error: " + error.code);
         };
 
+//Check if the user has a camera attached.  Seems like this only checks to see if the ability is there.
     if (navigator.getUserMedia) {
         navigator.getUserMedia(videoObj, (stream) => {
             video.src = stream;
@@ -22,12 +23,7 @@
     }
 
     document.getElementById("takePicture").addEventListener("click", () => {
-        if (takingPictures) {
-            //Let user know pictures are in progress
-        }else{
             takePictures();
-            takingPictures = true;
-        }
     });
 
 function buildPhotoStrip(imgArray){
@@ -43,7 +39,8 @@ function buildPhotoStrip(imgArray){
 
 
     function takePictures() {
-        let countdown = 3;
+        if (!takingPictures) {
+            let countdown = 3;
         let pictureCount = 0;
         countdownTimer();
         //set refreshIntervalID so you can cancel the loop later
@@ -62,6 +59,7 @@ function buildPhotoStrip(imgArray){
                 addDownloadButton();
             }
         }, 4000);//set to 4 seconds between pictures
+        }
     };
 
     function countdownTimer() {
