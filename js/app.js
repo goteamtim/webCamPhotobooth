@@ -6,10 +6,11 @@
         imagesArray = [],
         takingPictures = false,
         onError = (error) => {
-            console.log("Capture Error: " + error.code);
+            console.log("Capture Error: " + error);
+            alert("Oops it looks like you might not have a camera attached.\n Please come back later to enjoy the photobooth!");
+            takingPictures = true;
         };
 
-//Check if the user has a camera attached.  Seems like this only checks to see if the ability is there.
     if (navigator.getUserMedia) {
         navigator.getUserMedia(videoObj, (stream) => {
             video.src = stream;
