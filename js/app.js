@@ -54,6 +54,7 @@ function buildPhotoStrip(imgArray){
                 buildPhotoStrip(imagesArray);
                 //stops the interval
                 clearInterval(refreshInterval);
+                addDownloadButton();
             }
         }, 4000);//set to 4 seconds between pictures
     };
@@ -80,6 +81,18 @@ function buildPhotoStrip(imgArray){
         let img = new Image();
         img.src = canvas.toDataURL("image/jpg");
         return img;
+    }
+
+    function addDownloadButton(){
+        var photoStrip = document.getElementById("photoStrip");
+        var photoUrl = photoStrip.toDataURL("image/jpg");
+        let downloadButton = document.getElementById("downloadPhotoStrip");
+
+        /* Change MIME type to so the user can download instead of displaying the picture */
+        photoUrl = photoUrl.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+
+        downloadButton.href = photoUrl;
+        downloadButton.addEventListener("click",photoUrl,false);
     }
     
 //}, false);
