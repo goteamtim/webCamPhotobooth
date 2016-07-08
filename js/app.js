@@ -24,6 +24,7 @@
 
     document.getElementById("takePicture").addEventListener("click", () => {
             takePictures();
+            takingPictures = true;
     });
 
 function buildPhotoStrip(imgArray){
