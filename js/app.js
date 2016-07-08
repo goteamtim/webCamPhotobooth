@@ -4,6 +4,7 @@
         video = document.getElementById("videoStream"),
         videoObj = { "video": true },
         imagesArray = [],
+        takingPictures = false,
         onError = (error) => {
             console.log("Capture Error: " + error.code);
         };
@@ -21,9 +22,12 @@
     }
 
     document.getElementById("takePicture").addEventListener("click", () => {
-        takePictures();
-        //take four pictures here?  add them up?
-
+        if (takingPictures) {
+            //Let user know pictures are in progress
+        }else{
+            takePictures();
+            takingPictures = true;
+        }
     });
 
 function buildPhotoStrip(imgArray){
@@ -54,6 +58,7 @@ function buildPhotoStrip(imgArray){
                 buildPhotoStrip(imagesArray);
                 //stops the interval
                 clearInterval(refreshInterval);
+                takingPictures = false;
                 addDownloadButton();
             }
         }, 4000);//set to 4 seconds between pictures
