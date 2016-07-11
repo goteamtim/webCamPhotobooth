@@ -8,7 +8,8 @@
         onError = (error) => {
             console.log("Capture Error: " + error);
             alert("Oops it looks like you might not have a camera attached.\n Please come back later to enjoy the photobooth!");
-            takingPictures = true;
+            //Make sure user can't try again
+takingPictures = true;
         };
 
     if (navigator.getUserMedia) {
@@ -78,7 +79,6 @@ function buildPhotoStrip(imgArray){
     }
 
     function takePicture() {
-        //countdownTimer();
         context.drawImage(video, 0, 0, 640, 480);
     }
 
